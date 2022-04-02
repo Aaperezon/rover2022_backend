@@ -2,8 +2,8 @@ import serial
 import time
 import requests
 
-lopy = serial.Serial(port='COM10', baudrate=115200)
-arduino = serial.Serial(port='COM16', baudrate=115200)
+lopy = serial.Serial(port='COM9', baudrate=9600)
+arduino = serial.Serial(port='COM13', baudrate=9600)
 def getPayload(message):
     message = message.split()
     variables = {
