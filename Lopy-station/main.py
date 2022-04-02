@@ -2,7 +2,7 @@ import serial
 import time
 import requests
 
-lopy = serial.Serial(port='COM9', baudrate=115200)
+lopy = serial.Serial(port='COM8', baudrate=115200)
 def getPayload(message):
     message = message.split()
     variables = {
@@ -25,9 +25,8 @@ def run():
     try:
         message = (lopy.readline()).decode('utf-8')
         print( message)
-        
         # payload = getPayload(message)
-        #requests.post("http://localhost:81/rover2022/service/createsensor.php", json=payload, timeout=.1)
+        # requests.post("http://localhost:81/rover2022/service/createsensor.php", json=payload, timeout=.1)
     except Exception as e:
         print(e)
    

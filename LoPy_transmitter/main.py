@@ -21,5 +21,5 @@ while True:
         pycom.rgbled(0x00FF00)
     except:
         pycom.rgbled(0xFF0000)
-    time.sleep(.5)
+    # time.sleep(.5)
     
