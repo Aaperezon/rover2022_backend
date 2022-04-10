@@ -1,10 +1,9 @@
 from network import LoRa
 import socket
-import time
 import pycom
 import machine
-
-uart = machine.UART(0, 115200)
+from time import sleep
+uart = machine.UART(0, 9600)
 os.dupterm(uart)
 
 # Please pick the region that matches where you are using the device:
@@ -20,6 +19,6 @@ while True:
         s.send(all_message)
         pycom.rgbled(0x00FF00)
     except:
+        # print("Error with transmitter",e)
         pycom.rgbled(0xFF0000)
-    # time.sleep(.5)
-    
+    sleep(.5)

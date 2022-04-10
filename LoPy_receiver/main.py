@@ -1,6 +1,6 @@
 from network import LoRa
 import socket
-import time
+from time import sleep
 import machine
 import pycom
 
@@ -15,16 +15,15 @@ pycom.heartbeat(False)
 
 while True:
     try:
-        incomming_message = s.recv(64).decode("utf-8")  #Received through LoRa 
-        print(incomming_message)
-        # m = uart.writeline()
-        pycom.rgbled(0x00FF00) # Green
+        incomming_message = s.recv(128).decode("utf-8")  #Received through LoRa 
+        if len(incomming_message) > 0:
+            print(incomming_message)
+            pycom.rgbled(0x00FF00) # Green
+        else:
+            pycom.rgbled(0xFF0000) #Red
     except:
-        # uart1.write('Hello')        Send to Arduino
         pycom.rgbled(0xFF0000) #Red
-        print("Error client...")
-    time.sleep(1)
     
-
+    sleep(.5)
 
 

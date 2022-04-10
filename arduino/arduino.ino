@@ -63,7 +63,6 @@ void setup() {
   pinMode(sens2, INPUT); 
   pinMode(sens3, INPUT); 
   pinMode(sens4, INPUT);  
-  Serial.begin(9600);
 
    // Sensor de presión atmosférica:
    //For I2C, enable the following and disable the SPI section
@@ -125,19 +124,19 @@ void loop() {
   long measurement1 = vibration(sens1);
   String measurement_result1;
   if (measurement1 == 0){
-    measurement_result1 = "NULO";
+    measurement_result1 = "NULL";
     //Serial.print();
   }
   else if (measurement1 > 0 && measurement1 <= 400){
-    measurement_result1 = "BAJA";
+    measurement_result1 = "LOW";
     //Serial.print("\nSensor 1: Vibración BAJA");
   }  
   else if (measurement1 >= 401 && measurement1 <= 1000){
-    measurement_result1 = "MEDIA";
+    measurement_result1 = "MEDIUM";
     //Serial.print("\nSensor 1:Vibración MEDIA");
   }
   else
-    measurement_result1 = "ALTA";
+    measurement_result1 = "HIGH";
     //Serial.print("\nSensor 1: Vibración ALTA. ¡PRECAUCIÓN!"); 
   //delay(50);
 
@@ -145,15 +144,15 @@ void loop() {
   long measurement2 = vibration(sens2);
   String measurement_result2;
   if (measurement2 == 0){
-    measurement_result2 = "NULO";
+    measurement_result2 = "NULL";
     //Serial.print("\nSensor 2: Vibración NULA");
   }    
   else if (measurement2 > 0 &&  measurement2 <= 400){
-    measurement_result2 = "BAJA";
+    measurement_result2 = "LOW";
     //Serial.print("\nSensor 2: Vibración BAJA"); 
   } 
   else if (measurement2 >= 401 && measurement2 <= 1000){
-    measurement_result2 = "MEDIA";
+    measurement_result2 = "MEDIUM";
     //Serial.print("\nSensor 2: Vibración MEDIA");
   } 
   else
@@ -165,19 +164,19 @@ void loop() {
   long measurement3 = vibration(sens3);
   String measurement_result3;
   if (measurement3 == 0){
-    measurement_result3 = "NULA";
+    measurement_result3 = "NULL";
     //Serial.print("\nSensor 3: Vibración NULA");
   } 
   else if (measurement3 > 0 && measurement3 <= 400){
-    measurement_result3 = "BAJA";
+    measurement_result3 = "LOW";
     //Serial.print("\nSensor 3: Vibración BAJA"); 
   } 
   else if (measurement3 >= 401 && measurement3 <= 1000){
-    measurement_result3 = "MEDIA";
+    measurement_result3 = "MEDIUM";
     //Serial.print("\nSensor 3: Vibración MEDIA");
   }
   else 
-    measurement_result3 = "ALTA";
+    measurement_result3 = "HIGH";
     //Serial.print("\nSensor 3: Vibración ALTA. ¡PRECAUCIÓN!");
   //delay(50);
 
@@ -185,19 +184,19 @@ void loop() {
   long measurement4 = vibration(sens4);
   String measurement_result4;
   if (measurement4 == 0){
-    measurement_result4 = "NULA";
+    measurement_result4 = "NULL";
     //Serial.print("\nSensor 4: Vibración NULA");
   }
   else if (measurement4 > 0 && measurement4 <= 400){
-    measurement_result4 = "BAJA";
+    measurement_result4 = "LOW";
     //Serial.print("\nSensor 4: Vibración BAJA");
   }   
   else if (measurement4 >= 401 && measurement4 <= 1000){
-    measurement_result4 = "MEDIA";
+    measurement_result4 = "MEDIUM";
     //Serial.print("\nSensor 4: Vibración MEDIA");
   }
   else
-    measurement_result4 = "ALTA";
+    measurement_result4 = "HIGH";
     //Serial.print("\nSensor 4: Vibración ALTA. ¡PRECAUCIÓN!");
   //delay(50);
   //Serial.print("\n");
@@ -251,18 +250,16 @@ int sensorReading = analogRead(A0);                                   //UNCOMMEN
   //Serial.println();
 
   // Obtener información desde el monitor serie
-  if (Serial.available())
-  {
-    char temp = Serial.read();
-    if (temp == '+')
-      factor_calibracion += 1;
-    else if (temp == '-')
-      factor_calibracion -= 1;
-  }
+  //if (Serial.available())
+  //{
+  //  char temp = Serial.read();
+  //  if (temp == '+')
+  //    factor_calibracion += 1;
+  //  else if (temp == '-')
+  //    factor_calibracion -= 1;
+  //}
   Serial.println(measurement_result1+" "+measurement_result2+" "+measurement_result3+" "+measurement_result4+" "+ppm+" "+mySensor.readFloatHumidity()+" "+mySensor.readFloatPressure()+" "+mySensor.readFloatAltitudeMeters()+" "+mySensor.readTempC()+" "+bascula.get_units() + " " + x + " " + y + " " + z);
-  //Serial.println(String(x) + " " + String(y) + " " + String(z));
 
-  //Serial.println("%s %s %s %s %f %f %f %f %f %f",measurement_result1, measurement_result2, measurement_result3, measurement_result4, ppm, mySensor.readFloatHumidity(), mySensor.readFloatPressure(), mySensor.readFloatAltitudeMeters(), mySensor.readTempC(), bascula.get_units()); 
 
 }
 

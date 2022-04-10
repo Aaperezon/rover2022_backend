@@ -26,12 +26,10 @@ def run():
     message = (arduino.readline()).decode('utf-8')
     lopy.write(message.encode('utf-8'))
     print( message)
-    
+    # print((lopy.readline()).decode('utf-8'))
     # payload = getPayload(message)
     #requests.post("http://localhost:81/rover2022/service/createsensor.php", json=payload, timeout=.1)
-   
-
-
+    time.sleep(.05)
 if __name__ == '__main__':
     while True:
         run()
