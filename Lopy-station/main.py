@@ -4,7 +4,7 @@ import requests
 
 lopy = serial.Serial(port='COM8', baudrate=115200)
   
-def getPayLoad2(message):  
+def getPayLoad(message):  
     message = message.split()
     variables = {
         "vibration1": message[0], 
