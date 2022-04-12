@@ -1,0 +1,29 @@
+DROP DATABASE IF EXISTS watch1;
+CREATE DATABASE watch1;
+
+use watch1;
+
+DROP TABLE IF EXISTS data;
+CREATE TABLE data(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	accelerometer_x FLOAT,
+	accelerometer_y FLOAT,
+	accelerometer_z FLOAT,
+	gravity_x FLOAT,
+	gravity_y FLOAT,
+	gravity_z FLOAT,
+	gyroscope_x FLOAT,
+	gyroscope_y FLOAT,
+	gyroscope_z FLOAT,
+	heart_rate INT,
+	light_level FLOAT,
+	linear_acceleration_x FLOAT, 
+	linear_acceleration_y FLOAT, 
+	linear_acceleration_z FLOAT,
+	pressure FLOAT
+
+);
+
+
+
