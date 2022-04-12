@@ -9,13 +9,14 @@ except:
     pass  
 def getPayLoad(message):  
     message = message.split()
+    N=2
     variables = {
         "vibration1":         message[0], 
         "vibration2":         message[1],
         "vibration3":         message[2],
         "vibration4":         message[3],
         "gasCO2":       float(message[4]),
-        "humidity":     float(message[5]),
+        "humidity":     21,
         "pressure":     float(message[6]),
         "altitude":     float(message[7]),
         "temperature":  float(message[8]),
@@ -26,8 +27,8 @@ def getPayLoad(message):
        "gravity1_x":    round(random.uniform(15,18), N),
         "gravity1_y":    round(random.uniform(15,18), N),
         "gravity1_z":    round(random.uniform(15,18), N),
-        "light1":    round(random.uniform(15,18), N),
-        "heart_rate1":    float( random.uniform(100,120) ),
+        "light1":    int(random.uniform(20000,22000)),
+        "heart_rate1":    int( random.uniform(110,115) ),
     }
     return variables
 def getPayLoadSim():  
@@ -58,8 +59,8 @@ def run():
     global lopy
     try:
         message = (lopy.readline()).decode('utf-8')
-        payload = getPayLoad(message)
         print( message )
+        payload = getPayLoad(message)
         requests.post("http://localhost:81/rover2022/service/createsensor.php", json=payload, timeout=.1)
     except Exception as e:
         # print(e)
